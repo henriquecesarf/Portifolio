@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfólio — Henrique Cesar Farias Dantas
 
-## Getting Started
+Portfólio pessoal desenvolvido com **Next.js**, **TypeScript** e **Tailwind CSS**, com todo o conteúdo do currículo já estruturado e pronto para personalização.
 
-First, run the development server:
+## Como rodar
 
 ```bash
+cd portfolio-henrique
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) no navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estrutura do projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/              # Layout e página principal
+├── components/       # Seções do portfólio (Hero, About, Experience, etc.)
+└── data/
+    └── profile.ts    # Dados do currículo (edite aqui para atualizar o site)
+```
 
-## Learn More
+## Personalização
 
-To learn more about Next.js, take a look at the following resources:
+1. **Conteúdo** — Edite `src/data/profile.ts` para alterar textos, experiências, habilidades e projetos.
+2. **Visual** — Ajuste cores e estilos em `src/app/globals.css` e nos componentes.
+3. **Projetos** — Adicione links, imagens e descrições mais detalhadas na seção de projetos.
+4. **Foto** — Coloque uma imagem em `public/` e adicione no componente `Hero`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+O projeto pode ser publicado gratuitamente na [Vercel](https://vercel.com):
 
-## Deploy on Vercel
+```bash
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Links
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [GitHub](https://github.com/henriquecesarf)
+- [LinkedIn](https://www.linkedin.com/in/henrique-cesar-06338222b/)
+# Portifolio
