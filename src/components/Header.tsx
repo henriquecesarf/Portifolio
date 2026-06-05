@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { navLinks, profile } from "@/data/profile";
+import { usePortfolioContent } from "@/i18n/I18nProvider";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { profile, navLinks, ui } = usePortfolioContent();
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0a0f1a]/80 backdrop-blur-md">
@@ -31,7 +32,7 @@ export function Header() {
           type="button"
           className="text-slate-300 md:hidden"
           onClick={() => setOpen((prev) => !prev)}
-          aria-label={open ? "Fechar menu" : "Abrir menu"}
+          aria-label={open ? ui.header.closeMenu : ui.header.openMenu}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>

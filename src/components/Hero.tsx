@@ -1,8 +1,12 @@
+"use client";
+
 import { ArrowDown, Mail, MapPin } from "lucide-react";
-import { profile } from "@/data/profile";
+import { usePortfolioContent } from "@/i18n/I18nProvider";
 import { GitHubIcon, LinkedInIcon } from "./icons/SocialIcons";
 
 export function Hero() {
+  const { profile, ui } = usePortfolioContent();
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-24">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(56,189,248,0.15),_transparent_50%)]" />
@@ -14,7 +18,7 @@ export function Hero() {
           {profile.tagline}
         </p>
         <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
-          Olá, eu sou{" "}
+          {ui.hero.greeting}{" "}
           <span className="bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">
             {profile.name.split(" ")[0]} {profile.name.split(" ")[1]}
           </span>
@@ -31,7 +35,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-400"
           >
             <Mail size={16} />
-            Entrar em contato
+            {ui.hero.contact}
           </a>
           <a
             href={profile.github}
@@ -56,9 +60,9 @@ export function Hero() {
         <a
           href="#sobre"
           className="mt-16 inline-flex animate-bounce flex-col items-center gap-2 text-slate-500 transition hover:text-sky-400"
-          aria-label="Rolar para a seção sobre"
+          aria-label={ui.hero.scrollAria}
         >
-          <span className="text-xs uppercase tracking-widest">Explorar</span>
+          <span className="text-xs uppercase tracking-widest">{ui.hero.explore}</span>
           <ArrowDown size={20} />
         </a>
       </div>

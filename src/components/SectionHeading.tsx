@@ -1,4 +1,6 @@
-import { profile } from "@/data/profile";
+"use client";
+
+import { usePortfolioContent } from "@/i18n/I18nProvider";
 
 type SectionHeadingProps = {
   eyebrow: string;
@@ -27,17 +29,16 @@ export function SectionHeading({
 }
 
 export function Footer() {
+  const { profile, ui } = usePortfolioContent();
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-white/10 px-6 py-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-slate-500 sm:flex-row">
         <p>
-          © {year} {profile.name}. Todos os direitos reservados.
+          © {year} {profile.name}. {ui.footer.rights}
         </p>
-        <p>
-          Desenvolvido com Next.js, TypeScript e Tailwind CSS
-        </p>
+        <p>{ui.footer.builtWith}</p>
       </div>
     </footer>
   );

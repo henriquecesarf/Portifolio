@@ -1,16 +1,20 @@
+"use client";
+
 import { Mail, Phone } from "lucide-react";
-import { profile } from "@/data/profile";
+import { usePortfolioContent } from "@/i18n/I18nProvider";
 import { GitHubIcon, LinkedInIcon } from "./icons/SocialIcons";
 import { SectionHeading } from "./SectionHeading";
 
 export function Contact() {
+  const { profile, ui } = usePortfolioContent();
+
   return (
     <section id="contato" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="Contato"
-          title="Vamos conversar?"
-          description="Estou aberto a oportunidades remotas e projetos desafiadores em front-end."
+          eyebrow={ui.contact.eyebrow}
+          title={ui.contact.title}
+          description={ui.contact.description}
           centered
         />
 
@@ -23,7 +27,7 @@ export function Contact() {
               <Mail size={20} />
             </div>
             <div>
-              <p className="text-xs uppercase tracking-wider text-slate-500">E-mail</p>
+              <p className="text-xs uppercase tracking-wider text-slate-500">{ui.contact.email}</p>
               <p className="text-sm font-medium text-white">{profile.email}</p>
             </div>
           </a>
@@ -36,7 +40,7 @@ export function Contact() {
               <Phone size={20} />
             </div>
             <div>
-              <p className="text-xs uppercase tracking-wider text-slate-500">Telefone</p>
+              <p className="text-xs uppercase tracking-wider text-slate-500">{ui.contact.phone}</p>
               <p className="text-sm font-medium text-white">{profile.phone}</p>
             </div>
           </a>

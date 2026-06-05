@@ -1,14 +1,18 @@
-import { experiences } from "@/data/profile";
+"use client";
+
+import { usePortfolioContent } from "@/i18n/I18nProvider";
 import { SectionHeading } from "./SectionHeading";
 
 export function Experience() {
+  const { experiences, ui } = usePortfolioContent();
+
   return (
     <section id="experiencia" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="Carreira"
-          title="Experiência profissional"
-          description="Projetos de alta escala, sistemas em tempo real e entregas com impacto mensurável."
+          eyebrow={ui.experience.eyebrow}
+          title={ui.experience.title}
+          description={ui.experience.description}
         />
 
         <div className="relative space-y-8 before:absolute before:inset-y-0 before:left-[11px] before:w-px before:bg-white/10 md:before:left-1/2 md:before:-translate-x-px">

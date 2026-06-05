@@ -1,37 +1,41 @@
+"use client";
+
 import { ExternalLink, Globe, Smartphone, Star } from "lucide-react";
-import { featuredProjects, studyProjects, type Project } from "@/data/profile";
+import { usePortfolioContent } from "@/i18n/I18nProvider";
+import type { Project } from "@/i18n/types";
 import { SectionHeading } from "./SectionHeading";
 
-const platformConfig = {
-  mobile: {
-    label: "Mobile",
-    icon: Smartphone,
-    className: "border-violet-400/30 bg-violet-500/10 text-violet-300",
-  },
-  web: {
-    label: "Web",
-    icon: Globe,
-    className: "border-sky-400/30 bg-sky-500/10 text-sky-300",
-  },
-} as const;
-
-function ProjectBadges({ project }: { project: Project }) {
-  const platform = platformConfig[project.platform];
-  const PlatformIcon = platform.icon;
+function ProjectBadges({
+  project,
+  primaryLabel,
+  platformMobile,
+  platformWeb,
+}: {
+  project: Project;
+  primaryLabel: string;
+  platformMobile: string;
+  platformWeb: string;
+}) {
+  const platformLabel = project.platform === "mobile" ? platformMobile : platformWeb;
+  const PlatformIcon = project.platform === "mobile" ? Smartphone : Globe;
+  const platformClassName =
+    project.platform === "mobile"
+      ? "border-violet-400/30 bg-violet-500/10 text-violet-300"
+      : "border-sky-400/30 bg-sky-500/10 text-sky-300";
 
   return (
     <div className="flex flex-wrap items-center gap-2">
       {project.primary && (
         <span className="inline-flex items-center gap-1 rounded-full border border-amber-400/40 bg-amber-500/10 px-2.5 py-0.5 text-xs font-medium text-amber-300">
           <Star size={12} />
-          Projeto principal
+          {primaryLabel}
         </span>
       )}
       <span
-        className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium ${platform.className}`}
+        className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium ${platformClassName}`}
       >
         <PlatformIcon size={12} />
-        {platform.label}
+        {platformLabel}
       </span>
       {project.company && (
         <span className="rounded-full border border-white/10 px-2.5 py-0.5 text-xs text-slate-400">
@@ -61,12 +65,27 @@ function TechTags({ project }: { project: Project }) {
   );
 }
 
-function FeaturedProjectCard({ project }: { project: Project }) {
+function FeaturedProjectCard({
+  project,
+  primaryLabel,
+  platformMobile,
+  platformWeb,
+}: {
+  project: Project;
+  primaryLabel: string;
+  platformMobile: string;
+  platformWeb: string;
+}) {
   if (project.primary) {
     return (
       <article className="rounded-2xl border border-sky-400/30 bg-gradient-to-br from-sky-500/10 via-white/[0.03] to-indigo-500/10 p-8 md:p-10">
         <div className="mb-4 space-y-3">
-          <ProjectBadges project={project} />
+          <ProjectBadges
+            project={project}
+            primaryLabel={primaryLabel}
+            platformMobile={platformMobile}
+            platformWeb={platformWeb}
+          />
           <h3 className="text-2xl font-bold text-white md:text-3xl">{project.name}</h3>
         </div>
 
@@ -93,7 +112,12 @@ function FeaturedProjectCard({ project }: { project: Project }) {
   return (
     <article className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6">
       <div className="mb-4 space-y-2">
-        <ProjectBadges project={project} />
+        <ProjectBadges
+          project={project}
+          primaryLabel={primaryLabel}
+          platformMobile={platformMobile}
+          platformWeb={platformWeb}
+        />
         <h3 className="font-semibold text-white">{project.name}</h3>
       </div>
 
@@ -103,9 +127,21 @@ function FeaturedProjectCard({ project }: { project: Project }) {
   );
 }
 
-function StudyProjectCard({ project }: { project: Project }) {
-  const platform = platformConfig[project.platform];
-  const PlatformIcon = platform.icon;
+function StudyProjectCard({
+  project,
+  platformMobile,
+  platformWeb,
+}: {
+  project: Project;
+  platformMobile: string;
+  platformWeb: string;
+}) {
+  const platformLabel = project.platform === "mobile" ? platformMobile : platformWeb;
+  const PlatformIcon = project.platform === "mobile" ? Smartphone : Globe;
+  const platformClassName =
+    project.platform === "mobile"
+      ? "border-violet-400/30 bg-violet-500/10 text-violet-300"
+      : "border-sky-400/30 bg-sky-500/10 text-sky-300";
 
   return (
     <a
@@ -117,10 +153,10 @@ function StudyProjectCard({ project }: { project: Project }) {
       <div className="mb-4 flex items-start justify-between gap-4">
         <div className="space-y-2">
           <span
-            className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium ${platform.className}`}
+            className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium ${platformClassName}`}
           >
             <PlatformIcon size={12} />
-            {platform.label}
+            {platformLabel}
           </span>
           <h3 className="font-semibold text-white group-hover:text-slate-200">{project.name}</h3>
         </div>
@@ -137,6 +173,7 @@ function StudyProjectCard({ project }: { project: Project }) {
 }
 
 export function Projects() {
+  const { featuredProjects, studyProjects, ui } = usePortfolioContent();
   const primaryProject = featuredProjects.find((project) => project.primary);
   const otherFeatured = featuredProjects.filter((project) => !project.primary);
 
@@ -144,31 +181,47 @@ export function Projects() {
     <section id="projetos" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="Portfólio"
-          title="Projetos em destaque"
-          description="Experiência prática em plataformas web e apps mobile em produção — projetos corporativos sem links públicos."
+          eyebrow={ui.projects.eyebrow}
+          title={ui.projects.title}
+          description={ui.projects.description}
         />
 
         {primaryProject && (
           <div className="mb-8">
-            <FeaturedProjectCard project={primaryProject} />
+            <FeaturedProjectCard
+              project={primaryProject}
+              primaryLabel={ui.projects.primaryProject}
+              platformMobile={ui.projects.platformMobile}
+              platformWeb={ui.projects.platformWeb}
+            />
           </div>
         )}
 
         <div className="mb-16 grid gap-6 md:grid-cols-2">
           {otherFeatured.map((project) => (
-            <FeaturedProjectCard key={project.name} project={project} />
+            <FeaturedProjectCard
+              key={project.name}
+              project={project}
+              primaryLabel={ui.projects.primaryProject}
+              platformMobile={ui.projects.platformMobile}
+              platformWeb={ui.projects.platformWeb}
+            />
           ))}
         </div>
 
         <div className="mb-8">
-          <h3 className="mb-2 text-lg font-semibold text-white">Projetos de estudo</h3>
-          <p className="text-sm text-slate-400">Repositórios pessoais e exercícios de aprendizado.</p>
+          <h3 className="mb-2 text-lg font-semibold text-white">{ui.projects.studyTitle}</h3>
+          <p className="text-sm text-slate-400">{ui.projects.studyDescription}</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {studyProjects.map((project) => (
-            <StudyProjectCard key={project.name} project={project} />
+            <StudyProjectCard
+              key={project.name}
+              project={project}
+              platformMobile={ui.projects.platformMobile}
+              platformWeb={ui.projects.platformWeb}
+            />
           ))}
         </div>
       </div>

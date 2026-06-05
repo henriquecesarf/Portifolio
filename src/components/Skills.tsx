@@ -1,14 +1,18 @@
-import { skillGroups } from "@/data/profile";
+"use client";
+
+import { usePortfolioContent } from "@/i18n/I18nProvider";
 import { SectionHeading } from "./SectionHeading";
 
 export function Skills() {
+  const { skillGroups, ui } = usePortfolioContent();
+
   return (
     <section id="habilidades" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="Stack"
-          title="Habilidades técnicas"
-          description="Tecnologias que uso no dia a dia para construir interfaces performáticas e escaláveis."
+          eyebrow={ui.skills.eyebrow}
+          title={ui.skills.title}
+          description={ui.skills.description}
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
