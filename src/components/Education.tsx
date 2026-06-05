@@ -17,44 +17,44 @@ export function Education() {
         />
 
         <div className="grid gap-6 lg:grid-cols-3">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 lg:col-span-1">
-            <div className="mb-4 flex items-center gap-3 text-sky-400">
+          <div className="rounded-2xl border border-border bg-card p-6 lg:col-span-1">
+            <div className="mb-4 flex items-center gap-3 text-sky-500">
               <GraduationCap size={20} />
-              <h3 className="font-semibold text-white">{ui.education.graduation}</h3>
+              <h3 className="font-semibold text-heading">{ui.education.graduation}</h3>
             </div>
-            <p className="font-medium text-white">{education.degree}</p>
-            <p className="mt-2 text-sm text-slate-400">
+            <p className="font-medium text-heading">{education.degree}</p>
+            <p className="mt-2 text-sm text-muted">
               {education.institution} · {education.location}
             </p>
-            <p className="mt-1 text-sm text-sky-400">
+            <p className="mt-1 text-sm text-sky-500">
               {ui.education.expectedCompletion} {education.expectedCompletion}
             </p>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 lg:col-span-1">
-            <div className="mb-4 flex items-center gap-3 text-sky-400">
+          <div className="rounded-2xl border border-border bg-card p-6 lg:col-span-1">
+            <div className="mb-4 flex items-center gap-3 text-sky-500">
               <Award size={20} />
-              <h3 className="font-semibold text-white">{ui.education.certifications}</h3>
+              <h3 className="font-semibold text-heading">{ui.education.certifications}</h3>
             </div>
             <ul className="space-y-3">
               {certifications.map((cert) => (
-                <li key={cert} className="text-sm leading-relaxed text-slate-300">
+                <li key={cert} className="text-sm leading-relaxed text-muted-foreground">
                   {cert}
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 lg:col-span-1">
-            <div className="mb-4 flex items-center gap-3 text-sky-400">
+          <div className="rounded-2xl border border-border bg-card p-6 lg:col-span-1">
+            <div className="mb-4 flex items-center gap-3 text-sky-500">
               <Languages size={20} />
-              <h3 className="font-semibold text-white">{ui.education.languages}</h3>
+              <h3 className="font-semibold text-heading">{ui.education.languages}</h3>
             </div>
             <ul className="space-y-3">
               {languages.map((lang) => (
                 <li key={lang.name} className="flex justify-between text-sm">
-                  <span className="font-medium text-white">{lang.name}</span>
-                  <span className="text-slate-400">{lang.level}</span>
+                  <span className="font-medium text-heading">{lang.name}</span>
+                  <span className="text-muted">{lang.level}</span>
                 </li>
               ))}
             </ul>

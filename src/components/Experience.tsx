@@ -15,7 +15,7 @@ export function Experience() {
           description={ui.experience.description}
         />
 
-        <div className="relative space-y-8 before:absolute before:inset-y-0 before:left-[11px] before:w-px before:bg-white/10 md:before:left-1/2 md:before:-translate-x-px">
+        <div className="relative space-y-8 before:absolute before:inset-y-0 before:left-[11px] before:w-px before:bg-border md:before:left-1/2 md:before:-translate-x-px">
           {experiences.map((item, index) => (
             <article
               key={item.company}
@@ -24,20 +24,20 @@ export function Experience() {
               }`}
             >
               <div className="md:text-right">
-                <div className="absolute left-0 top-2 h-6 w-6 rounded-full border-2 border-sky-400 bg-[#0a0f1a] md:left-1/2 md:-translate-x-1/2" />
-                <p className="pl-10 text-sm font-medium text-sky-400 md:pl-0">{item.period}</p>
-                <h3 className="mt-1 pl-10 text-xl font-semibold text-white md:pl-0">
+                <div className="absolute left-0 top-2 h-6 w-6 rounded-full border-2 border-sky-400 bg-background md:left-1/2 md:-translate-x-1/2" />
+                <p className="pl-10 text-sm font-medium text-sky-500 md:pl-0">{item.period}</p>
+                <h3 className="mt-1 pl-10 text-xl font-semibold text-heading md:pl-0">
                   {item.role}
                 </h3>
-                <p className="pl-10 text-slate-400 md:pl-0">
+                <p className="pl-10 text-muted md:pl-0">
                   {item.company} · {item.location}
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:ml-0">
+              <div className="rounded-2xl border border-border bg-card p-6 md:ml-0">
                 <ul className="space-y-3">
                   {item.highlights.map((highlight) => (
-                    <li key={highlight} className="flex gap-3 text-sm leading-relaxed text-slate-300">
+                    <li key={highlight} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-400" />
                       {highlight}
                     </li>

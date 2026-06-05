@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ServiceWorkerCleanup } from "@/components/ServiceWorkerCleanup";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { getContent } from "@/i18n/get-content";
 import { I18nProvider } from "@/i18n/I18nProvider";
 import { getRequestLocale } from "@/i18n/locale";
@@ -14,6 +15,22 @@ const serviceWorkerCleanupScript = `
       });
     });
   }
+`;
+
+const themeInitScript = `
+  (function () {
+    try {
+      var raw = localStorage.getItem("portfolio-theme");
+      var theme = "dark";
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        theme = parsed.state && parsed.state.theme === "light" ? "light" : "dark";
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+    } catch (error) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  })();
 `;
 
 const inter = Inter({
@@ -58,13 +75,16 @@ export default async function RootLayout({
   const content = getContent(locale);
 
   return (
-    <html lang={content.htmlLang} className={`${inter.variable} scroll-smooth`}>
+    <html lang={content.htmlLang} className={`${inter.variable} scroll-smooth`} suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script dangerouslySetInnerHTML={{ __html: serviceWorkerCleanupScript }} />
       </head>
-      <body className="min-h-screen bg-[#0a0f1a] font-sans text-slate-200 antialiased">
+      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <ServiceWorkerCleanup />
-        <I18nProvider content={content}>{children}</I18nProvider>
+        <ThemeProvider>
+          <I18nProvider content={content}>{children}</I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

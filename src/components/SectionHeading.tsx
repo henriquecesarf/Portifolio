@@ -17,13 +17,13 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className={`mb-12 max-w-2xl ${centered ? "mx-auto text-center" : ""}`}>
-      <p className="mb-2 text-sm font-medium uppercase tracking-[0.2em] text-sky-400">
+      <p className="mb-2 text-sm font-medium uppercase tracking-[0.2em] text-sky-500">
         {eyebrow}
       </p>
-      <h2 className="mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl">
+      <h2 className="mb-4 text-3xl font-bold tracking-tight text-heading md:text-4xl">
         {title}
       </h2>
-      <p className="text-slate-400">{description}</p>
+      <p className="text-muted">{description}</p>
     </div>
   );
 }
@@ -33,8 +33,8 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 px-6 py-8">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-slate-500 sm:flex-row">
+    <footer className="border-t border-border px-6 py-8">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-muted sm:flex-row">
         <p>
           © {year} {profile.name}. {ui.footer.rights}
         </p>

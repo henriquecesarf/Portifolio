@@ -14,8 +14,8 @@ export function About() {
           title={ui.about.title}
           description={ui.about.description}
         />
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 md:p-10">
-          <p className="text-lg leading-relaxed text-slate-300">{profile.summary}</p>
+        <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
+          <p className="text-lg leading-relaxed text-muted-foreground">{profile.summary}</p>
         </div>
       </div>
     </section>

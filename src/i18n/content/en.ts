@@ -251,6 +251,8 @@ export const contentEn: PortfolioContent = {
     header: {
       openMenu: "Open menu",
       closeMenu: "Close menu",
+      lightMode: "Switch to light mode",
+      darkMode: "Switch to dark mode",
     },
   },
 };

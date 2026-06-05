@@ -17,18 +17,15 @@ export function Skills() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group) => (
-            <div
-              key={group.title}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
-            >
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-sky-400">
+            <div key={group.title} className="rounded-2xl border border-border bg-card p-6">
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-sky-500">
                 {group.title}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-300"
+                    className="rounded-full border border-border bg-card-hover px-3 py-1 text-sm text-muted-foreground"
                   >
                     {skill}
                   </span>

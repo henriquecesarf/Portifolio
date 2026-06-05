@@ -38,7 +38,7 @@ function ProjectBadges({
         {platformLabel}
       </span>
       {project.company && (
-        <span className="rounded-full border border-white/10 px-2.5 py-0.5 text-xs text-slate-400">
+        <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted">
           {project.company}
         </span>
       )}
@@ -78,7 +78,7 @@ function FeaturedProjectCard({
 }) {
   if (project.primary) {
     return (
-      <article className="rounded-2xl border border-sky-400/30 bg-gradient-to-br from-sky-500/10 via-white/[0.03] to-indigo-500/10 p-8 md:p-10">
+      <article className="rounded-2xl border border-sky-400/30 bg-gradient-to-br from-sky-500/10 via-card to-indigo-500/10 p-8 md:p-10">
         <div className="mb-4 space-y-3">
           <ProjectBadges
             project={project}
@@ -86,17 +86,17 @@ function FeaturedProjectCard({
             platformMobile={platformMobile}
             platformWeb={platformWeb}
           />
-          <h3 className="text-2xl font-bold text-white md:text-3xl">{project.name}</h3>
+          <h3 className="text-2xl font-bold text-heading md:text-3xl">{project.name}</h3>
         </div>
 
-        <p className="mb-6 max-w-3xl text-base leading-relaxed text-slate-300">
+        <p className="mb-6 max-w-3xl text-base leading-relaxed text-muted-foreground">
           {project.description}
         </p>
 
         {project.highlights && (
           <ul className="mb-6 grid gap-2 sm:grid-cols-2">
             {project.highlights.map((highlight) => (
-              <li key={highlight} className="flex gap-2 text-sm text-slate-300">
+              <li key={highlight} className="flex gap-2 text-sm text-muted-foreground">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-400" />
                 {highlight}
               </li>
@@ -110,7 +110,7 @@ function FeaturedProjectCard({
   }
 
   return (
-    <article className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+    <article className="flex flex-col rounded-2xl border border-border bg-card p-6">
       <div className="mb-4 space-y-2">
         <ProjectBadges
           project={project}
@@ -118,10 +118,10 @@ function FeaturedProjectCard({
           platformMobile={platformMobile}
           platformWeb={platformWeb}
         />
-        <h3 className="font-semibold text-white">{project.name}</h3>
+        <h3 className="font-semibold text-heading">{project.name}</h3>
       </div>
 
-      <p className="mb-4 flex-1 text-sm leading-relaxed text-slate-400">{project.description}</p>
+      <p className="mb-4 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
       <TechTags project={project} />
     </article>
   );
@@ -148,7 +148,7 @@ function StudyProjectCard({
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col rounded-2xl border border-white/5 bg-white/[0.03] p-6 transition hover:border-white/20 hover:bg-white/[0.05]"
+      className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition hover:border-border-strong hover:bg-card-hover"
     >
       <div className="mb-4 flex items-start justify-between gap-4">
         <div className="space-y-2">
@@ -158,15 +158,15 @@ function StudyProjectCard({
             <PlatformIcon size={12} />
             {platformLabel}
           </span>
-          <h3 className="font-semibold text-white group-hover:text-slate-200">{project.name}</h3>
+          <h3 className="font-semibold text-heading group-hover:text-muted-foreground">{project.name}</h3>
         </div>
         <ExternalLink
           size={16}
-          className="shrink-0 text-slate-500 transition group-hover:text-sky-400"
+          className="shrink-0 text-muted transition group-hover:text-sky-500"
         />
       </div>
 
-      <p className="mb-4 flex-1 text-sm leading-relaxed text-slate-400">{project.description}</p>
+      <p className="mb-4 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
       <TechTags project={project} />
     </a>
   );
@@ -210,8 +210,8 @@ export function Projects() {
         </div>
 
         <div className="mb-8">
-          <h3 className="mb-2 text-lg font-semibold text-white">{ui.projects.studyTitle}</h3>
-          <p className="text-sm text-slate-400">{ui.projects.studyDescription}</p>
+          <h3 className="mb-2 text-lg font-semibold text-heading">{ui.projects.studyTitle}</h3>
+          <p className="text-sm text-muted">{ui.projects.studyDescription}</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

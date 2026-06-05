@@ -83,6 +83,6 @@ export type PortfolioContent = {
       phone: string;
     };
     footer: { rights: string; builtWith: string };
-    header: { openMenu: string; closeMenu: string };
+    header: { openMenu: string; closeMenu: string; lightMode: string; darkMode: string };
   };
 };

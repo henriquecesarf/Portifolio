@@ -251,6 +251,8 @@ export const contentPt: PortfolioContent = {
     header: {
       openMenu: "Abrir menu",
       closeMenu: "Fechar menu",
+      lightMode: "Ativar modo claro",
+      darkMode: "Ativar modo escuro",
     },
   },
 };
