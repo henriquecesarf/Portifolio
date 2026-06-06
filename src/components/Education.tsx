@@ -50,11 +50,13 @@ export function Education() {
               <Languages size={20} />
               <h3 className="font-semibold text-heading">{ui.education.languages}</h3>
             </div>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {languages.map((lang) => (
-                <li key={lang.name} className="flex justify-between text-sm">
-                  <span className="font-medium text-heading">{lang.name}</span>
-                  <span className="text-muted">{lang.level}</span>
+                <li key={lang.name} className="flex items-start justify-between gap-4 text-sm">
+                  <span className="shrink-0 font-medium text-heading">{lang.name}</span>
+                  <span className="min-w-0 flex-1 text-right leading-relaxed text-muted">
+                    {lang.level}
+                  </span>
                 </li>
               ))}
             </ul>
