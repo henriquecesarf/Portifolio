@@ -5,6 +5,17 @@ import { usePortfolioContent } from "@/i18n/I18nProvider";
 import type { Project } from "@/i18n/types";
 import { SectionHeading } from "./SectionHeading";
 
+const platformPillClasses = {
+  mobile: "border-violet-400/30 bg-violet-500/10 text-violet-500",
+  web: "border-sky-400/30 bg-sky-500/10 text-sky-500",
+} as const;
+
+const techPillClasses = {
+  mobile:
+    "rounded-full border border-violet-400/30 bg-violet-500/10 px-2.5 py-1 text-xs font-medium text-violet-500",
+  web: "rounded-full border border-sky-400/30 bg-sky-500/10 px-2.5 py-1 text-xs font-medium text-sky-500",
+} as const;
+
 function ProjectBadges({
   project,
   primaryLabel,
@@ -18,15 +29,12 @@ function ProjectBadges({
 }) {
   const platformLabel = project.platform === "mobile" ? platformMobile : platformWeb;
   const PlatformIcon = project.platform === "mobile" ? Smartphone : Globe;
-  const platformClassName =
-    project.platform === "mobile"
-      ? "border-violet-400/30 bg-violet-500/10 text-violet-300"
-      : "border-sky-400/30 bg-sky-500/10 text-sky-300";
+  const platformClassName = platformPillClasses[project.platform];
 
   return (
     <div className="flex flex-wrap items-center gap-2">
       {project.primary && (
-        <span className="inline-flex items-center gap-1 rounded-full border border-amber-400/40 bg-amber-500/10 px-2.5 py-0.5 text-xs font-medium text-amber-300">
+        <span className="inline-flex items-center gap-1 rounded-full border border-amber-400/40 bg-amber-500/10 px-2.5 py-0.5 text-xs font-medium text-amber-500">
           <Star size={12} />
           {primaryLabel}
         </span>
@@ -38,7 +46,7 @@ function ProjectBadges({
         {platformLabel}
       </span>
       {project.company && (
-        <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted">
+        <span className="rounded-full border border-border bg-card-hover px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
           {project.company}
         </span>
       )}
@@ -50,14 +58,7 @@ function TechTags({ project }: { project: Project }) {
   return (
     <div className="flex flex-wrap gap-2">
       {project.tech.map((tech) => (
-        <span
-          key={tech}
-          className={`rounded-md px-2 py-1 text-xs ${
-            project.platform === "mobile"
-              ? "bg-violet-500/10 text-violet-300"
-              : "bg-sky-500/10 text-sky-300"
-          }`}
-        >
+        <span key={tech} className={techPillClasses[project.platform]}>
           {tech}
         </span>
       ))}
@@ -138,10 +139,7 @@ function StudyProjectCard({
 }) {
   const platformLabel = project.platform === "mobile" ? platformMobile : platformWeb;
   const PlatformIcon = project.platform === "mobile" ? Smartphone : Globe;
-  const platformClassName =
-    project.platform === "mobile"
-      ? "border-violet-400/30 bg-violet-500/10 text-violet-300"
-      : "border-sky-400/30 bg-sky-500/10 text-sky-300";
+  const platformClassName = platformPillClasses[project.platform];
 
   return (
     <a

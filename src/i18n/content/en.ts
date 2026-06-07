@@ -98,17 +98,62 @@ export const contentEn: PortfolioContent = {
       skills: ["Node.js", "REST APIs", "Twilio/WebRTC", "MySQL/MongoDB", "Scrum/Kanban"],
     },
   ],
-  education: {
-    degree: "Systems Analysis and Development",
-    institution: "Universidade Unime",
-    location: "Lauro de Freitas, BA",
-    expectedCompletion: "Dec 2025",
-  },
+  degrees: [
+    {
+      category: "Bachelor's Degree",
+      degree: "Systems Analysis and Development",
+      institution: "Universidade Unime",
+      location: "Lauro de Freitas, BA",
+      period: "Dec 2025",
+      isExpectedCompletion: true,
+    },
+    {
+      category: "Technical Education",
+      degree: "Systems Development",
+      institution: "SENAI CIMATEC",
+      period: "Aug 2020 - Dec 2021",
+      grade: "8.5",
+      skills: [
+        "API Development",
+        "Git",
+        "Web Development",
+        "CSS",
+        "React",
+        "C#",
+        "Vue",
+        "Teamwork",
+        "React Native",
+      ],
+    },
+  ],
   certifications: [
-    "Agile Methodology: Scrum and Kanban (GitHub, Monday, Jira) – 2023",
-    "React: TypeScript, Styled Components, Redux Saga, Performance Optimization – 2022",
-    "C#: Object-Oriented Programming, API Consumption, File Handling – 2022",
-    "Docker and Linux Fundamentals – 2021",
+    {
+      title: "NLW Unite – React.js (Rocketseat) – Apr 2024",
+      url: "https://app.rocketseat.com.br/certificates/12d35def-45b6-4583-830c-d864b0200798",
+    },
+    {
+      title: "React: Styled Components (Alura) – Mar 2024",
+      url: "https://cursos.alura.com.br/certificate/8352093b-b06c-4e61-bcc9-c065e9825f5d",
+    },
+    {
+      title: "React: Redux Saga (Alura) – Mar 2024",
+      url: "https://cursos.alura.com.br/certificate/e5dad657-5e7f-44ed-89d3-b9beccd356c6",
+    },
+    {
+      title: "NLW Expert – React Track (Rocketseat) – Feb 2024",
+      url: "https://app.rocketseat.com.br/certificates/9feb6a42-f098-462a-a4f1-21798b42178e",
+    },
+    {
+      title: "React: Performance Optimization (Alura) – Feb 2024",
+      url: "https://cursos.alura.com.br/certificate/3d001646-2a8c-4ffc-be3c-dce8423c0c02",
+    },
+    {
+      title: "React: TypeScript (Alura) – Feb 2024",
+      url: "https://cursos.alura.com.br/certificate/a8696e3b-8aea-4d24-aee2-0a920890ad89",
+    },
+    { title: "Agile Methodology: Scrum and Kanban (GitHub, Monday, Jira) – 2023" },
+    { title: "C#: Object-Oriented Programming, API Consumption, File Handling – 2022" },
+    { title: "Docker and Linux Fundamentals – 2021" },
   ],
   languages: [
     { name: "Portuguese", level: "Native" },
@@ -164,6 +209,14 @@ export const contentEn: PortfolioContent = {
     },
   ],
   studyProjects: [
+    {
+      name: "Portfolio",
+      description:
+        "Personal portfolio built with Next.js — structured résumé, light/dark theme, i18n (PT/EN), experience, education, and projects sections, deployed on Vercel.",
+      tech: ["Next.js", "TypeScript", "Tailwind CSS", "i18n"],
+      url: "https://github.com/henriquecesarf/Portifolio",
+      platform: "web",
+    },
     {
       name: "SkillFlow",
       description:
@@ -221,10 +274,12 @@ export const contentEn: PortfolioContent = {
       eyebrow: "Education",
       title: "Education & certifications",
       description: "Academic background and courses that complement my professional practice.",
-      graduation: "Degree",
+      graduation: "Academic education",
       certifications: "Certifications",
       languages: "Languages",
       expectedCompletion: "Expected completion:",
+      grade: "Grade:",
+      viewCertificate: "View certificate",
     },
     projects: {
       eyebrow: "Portfolio",

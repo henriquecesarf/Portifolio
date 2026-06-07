@@ -36,13 +36,17 @@ export type PortfolioContent = {
     highlights: readonly string[];
   }[];
   skillGroups: readonly { title: string; skills: readonly string[] }[];
-  education: {
+  degrees: readonly {
+    category: string;
     degree: string;
     institution: string;
-    location: string;
-    expectedCompletion: string;
-  };
-  certifications: readonly string[];
+    location?: string;
+    period: string;
+    isExpectedCompletion?: boolean;
+    grade?: string;
+    skills?: readonly string[];
+  }[];
+  certifications: readonly { title: string; url?: string }[];
   languages: readonly { name: string; level: string }[];
   featuredProjects: Project[];
   studyProjects: Project[];
@@ -64,6 +68,8 @@ export type PortfolioContent = {
       certifications: string;
       languages: string;
       expectedCompletion: string;
+      grade: string;
+      viewCertificate: string;
     };
     projects: {
       eyebrow: string;
