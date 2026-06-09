@@ -6,6 +6,7 @@ import { Footer } from "@/components/SectionHeading";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Projects } from "@/components/Projects";
+import { RevealSection } from "@/components/RevealSection";
 import { Skills } from "@/components/Skills";
 
 export default function Home() {
@@ -13,13 +14,27 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Skills />
-        <Education />
-        <Projects />
-        <Contact />
+        <RevealSection immediate>
+          <Hero />
+        </RevealSection>
+        <RevealSection>
+          <About />
+        </RevealSection>
+        <RevealSection>
+          <Experience />
+        </RevealSection>
+        <RevealSection>
+          <Skills />
+        </RevealSection>
+        <RevealSection>
+          <Education />
+        </RevealSection>
+        <RevealSection>
+          <Projects />
+        </RevealSection>
+        <RevealSection>
+          <Contact />
+        </RevealSection>
       </main>
       <Footer />
     </>
