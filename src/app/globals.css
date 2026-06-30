@@ -12,6 +12,7 @@
   --card: rgb(255 255 255 / 0.03);
   --card-hover: rgb(255 255 255 / 0.05);
   --section-alt: rgb(255 255 255 / 0.025);
+  --header-height: 4.5rem;
   --selection-bg: rgb(56 189 248 / 0.3);
   --selection-text: #ffffff;
 }
@@ -48,6 +49,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
 }
 
 body {
