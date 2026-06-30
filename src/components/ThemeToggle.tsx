@@ -13,7 +13,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="rounded-full border border-border p-2 text-muted-foreground transition hover:border-sky-400/50 hover:text-sky-500"
+      className="rounded-full border border-border p-2 text-muted-foreground transition hover:border-sky-400/50 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60"
       aria-label={theme === "dark" ? ui.header.lightMode : ui.header.darkMode}
     >
       {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}

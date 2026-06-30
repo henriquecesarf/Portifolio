@@ -9,6 +9,10 @@ import { Projects } from "@/components/Projects";
 import { RevealSection } from "@/components/RevealSection";
 import { Skills } from "@/components/Skills";
 
+function SectionDivider() {
+  return <div className="section-separator" aria-hidden />;
+}
+
 export default function Home() {
   return (
     <>
@@ -17,21 +21,27 @@ export default function Home() {
         <RevealSection immediate>
           <Hero />
         </RevealSection>
+        <SectionDivider />
         <RevealSection>
           <About />
         </RevealSection>
+        <SectionDivider />
         <RevealSection>
           <Experience />
         </RevealSection>
+        <SectionDivider />
         <RevealSection>
           <Skills />
         </RevealSection>
+        <SectionDivider />
         <RevealSection>
           <Education />
         </RevealSection>
+        <SectionDivider />
         <RevealSection>
           <Projects />
         </RevealSection>
+        <SectionDivider />
         <RevealSection>
           <Contact />
         </RevealSection>

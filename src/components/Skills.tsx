@@ -7,7 +7,7 @@ export function Skills() {
   const { skillGroups, ui } = usePortfolioContent();
 
   return (
-    <section id="habilidades" className="px-6 py-24">
+    <section id="habilidades" className="section-surface-alt px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow={ui.skills.eyebrow}

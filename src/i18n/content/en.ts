@@ -308,6 +308,9 @@ export const contentEn: PortfolioContent = {
       closeMenu: "Close menu",
       lightMode: "Switch to light mode",
       darkMode: "Switch to dark mode",
+      language: "Language",
+      switchToPortuguese: "Switch to Portuguese",
+      switchToEnglish: "Switch to English",
     },
   },
 };

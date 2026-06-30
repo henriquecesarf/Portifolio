@@ -1,3 +1,4 @@
+import { isLocale, LOCALE_COOKIE } from "@/lib/locale-cookie";
 import type { Locale } from "./types";
 
 export function detectLocale(acceptLanguage: string | null | undefined): Locale {
@@ -22,6 +23,14 @@ export function detectLocale(acceptLanguage: string | null | undefined): Locale 
 }
 
 export async function getRequestLocale(): Promise<Locale> {
+  const { cookies } = await import("next/headers");
+  const cookieStore = await cookies();
+  const storedLocale = cookieStore.get(LOCALE_COOKIE)?.value;
+
+  if (isLocale(storedLocale)) {
+    return storedLocale;
+  }
+
   const { headers } = await import("next/headers");
   const headerStore = await headers();
 

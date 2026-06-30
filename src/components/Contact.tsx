@@ -21,7 +21,7 @@ export function Contact() {
         <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
           <a
             href={`mailto:${profile.email}`}
-            className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition hover:border-sky-400/40"
+            className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition hover:border-sky-400/40 hover:bg-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60"
           >
             <div className="rounded-xl bg-sky-500/10 p-3 text-sky-500">
               <Mail size={20} />
@@ -34,7 +34,7 @@ export function Contact() {
 
           <a
             href={`tel:${profile.phone.replace(/\D/g, "")}`}
-            className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition hover:border-sky-400/40"
+            className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition hover:border-sky-400/40 hover:bg-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60"
           >
             <div className="rounded-xl bg-sky-500/10 p-3 text-sky-500">
               <Phone size={20} />
@@ -49,7 +49,7 @@ export function Contact() {
             href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition hover:border-sky-400/40"
+            className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition hover:border-sky-400/40 hover:bg-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60"
           >
             <div className="rounded-xl bg-sky-500/10 p-3 text-sky-500">
               <LinkedInIcon size={20} />
@@ -64,7 +64,7 @@ export function Contact() {
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition hover:border-sky-400/40"
+            className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition hover:border-sky-400/40 hover:bg-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60"
           >
             <div className="rounded-xl bg-sky-500/10 p-3 text-sky-500">
               <GitHubIcon size={20} />

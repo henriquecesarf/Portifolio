@@ -7,7 +7,7 @@ export function About() {
   const { profile, ui } = usePortfolioContent();
 
   return (
-    <section id="sobre" className="px-6 py-24">
+    <section id="sobre" className="section-surface-alt px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow={ui.about.eyebrow}

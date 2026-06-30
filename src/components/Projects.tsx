@@ -111,7 +111,7 @@ function FeaturedProjectCard({
   }
 
   return (
-    <article className="flex flex-col rounded-2xl border border-border bg-card p-6">
+    <article className="flex flex-col rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-0.5 hover:border-border-strong hover:bg-card-hover hover:shadow-lg hover:shadow-sky-500/5">
       <div className="mb-4 space-y-2">
         <ProjectBadges
           project={project}
@@ -146,7 +146,7 @@ function StudyProjectCard({
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition hover:border-border-strong hover:bg-card-hover"
+      className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-0.5 hover:border-sky-400/40 hover:bg-card-hover hover:shadow-lg hover:shadow-sky-500/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60"
     >
       <div className="mb-4 flex items-start justify-between gap-4">
         <div className="space-y-2">
@@ -156,7 +156,7 @@ function StudyProjectCard({
             <PlatformIcon size={12} />
             {platformLabel}
           </span>
-          <h3 className="font-semibold text-heading group-hover:text-muted-foreground">{project.name}</h3>
+          <h3 className="font-semibold text-heading transition group-hover:text-sky-500">{project.name}</h3>
         </div>
         <ExternalLink
           size={16}
@@ -176,7 +176,7 @@ export function Projects() {
   const otherFeatured = featuredProjects.filter((project) => !project.primary);
 
   return (
-    <section id="projetos" className="px-6 py-24">
+    <section id="projetos" className="section-surface-alt px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow={ui.projects.eyebrow}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ServiceWorkerCleanup } from "@/components/ServiceWorkerCleanup";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { getContent } from "@/i18n/get-content";
@@ -36,6 +36,11 @@ const themeInitScript = `
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -75,7 +80,11 @@ export default async function RootLayout({
   const content = getContent(locale);
 
   return (
-    <html lang={content.htmlLang} className={`${inter.variable} scroll-smooth`} suppressHydrationWarning>
+    <html
+      lang={content.htmlLang}
+      className={`${inter.variable} ${plusJakarta.variable} scroll-smooth`}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script dangerouslySetInnerHTML={{ __html: serviceWorkerCleanupScript }} />
