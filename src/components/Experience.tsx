@@ -3,6 +3,7 @@
 import { usePortfolioContent } from "@/i18n/I18nProvider";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import type { PortfolioContent } from "@/i18n/types";
+import type { CSSProperties } from "react";
 import { SectionHeading } from "./SectionHeading";
 
 type ExperienceItem = PortfolioContent["experiences"][number];
@@ -15,7 +16,6 @@ function ExperienceTimelineItem({
   index: number;
 }) {
   const isEven = index % 2 === 0;
-  const { ref, visible } = useRevealOnScroll<HTMLElement>();
 
   const meta = (
     <div className={isEven ? "md:text-right" : "md:text-left"}>
@@ -42,12 +42,14 @@ function ExperienceTimelineItem({
 
   return (
     <article
-      ref={ref}
-      className={`reveal-item relative grid gap-6 pl-10 md:grid-cols-2 md:items-center md:gap-12 md:pl-0 ${
-        visible ? "is-visible" : ""
-      } ${isEven ? "reveal-item--from-left" : "reveal-item--from-right"}`}
+      className={`experience-item relative grid gap-6 pl-10 md:grid-cols-2 md:items-center md:gap-12 md:pl-0 ${
+        isEven ? "experience-item--from-left" : "experience-item--from-right"
+      }`}
+      style={{ "--item-index": index } as CSSProperties}
     >
-      <div className="timeline-dot absolute left-0 top-6 h-6 w-6 rounded-full border-2 border-sky-400 bg-background md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2" />
+      <div className="absolute left-0 top-6 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+        <div className="timeline-dot h-6 w-6 rounded-full border-2 border-sky-400 bg-background" />
+      </div>
 
       {isEven ? (
         <>
@@ -56,8 +58,8 @@ function ExperienceTimelineItem({
         </>
       ) : (
         <>
-          <div className="md:order-1">{card}</div>
-          <div className="md:order-2">{meta}</div>
+          <div className="order-1 md:order-2">{meta}</div>
+          <div className="order-2 md:order-1">{card}</div>
         </>
       )}
     </article>
@@ -66,6 +68,10 @@ function ExperienceTimelineItem({
 
 export function Experience() {
   const { experiences, ui } = usePortfolioContent();
+  const { ref, visible } = useRevealOnScroll<HTMLDivElement>({
+    threshold: 0,
+    rootMargin: "0px 0px -10% 0px",
+  });
 
   return (
     <section id="experiencia" className="px-6 py-24">
@@ -76,7 +82,12 @@ export function Experience() {
           description={ui.experience.description}
         />
 
-        <div className="relative space-y-12 before:absolute before:inset-y-0 before:left-[11px] before:w-px before:bg-border md:before:left-1/2 md:before:-translate-x-px">
+        <div
+          ref={ref}
+          className={`experience-timeline relative space-y-12 before:absolute before:inset-y-0 before:left-[11px] before:w-px before:bg-border md:before:left-1/2 md:before:-translate-x-px ${
+            visible ? "is-visible" : ""
+          }`}
+        >
           {experiences.map((item, index) => (
             <ExperienceTimelineItem key={`${item.company}-${item.period}`} item={item} index={index} />
           ))}

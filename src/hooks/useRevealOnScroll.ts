@@ -18,17 +18,28 @@ export function useRevealOnScroll<T extends HTMLElement = HTMLDivElement>(
     const element = ref.current;
     if (!element) return;
 
+    const reveal = () => {
+      setVisible(true);
+      observer.disconnect();
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
+          reveal();
         }
       },
       { threshold, rootMargin },
     );
 
     observer.observe(element);
+
+    const rect = element.getBoundingClientRect();
+    const isInView = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+    if (isInView) {
+      reveal();
+    }
+
     return () => observer.disconnect();
   }, [rootMargin, threshold]);
 

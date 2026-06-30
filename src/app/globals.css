@@ -109,43 +109,45 @@ button:focus-visible {
   transform: translateY(0);
 }
 
-.reveal-item {
+.experience-timeline .experience-item {
   opacity: 0;
   transform: translateY(1.5rem);
   transition:
     opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--item-index, 0) * 120ms);
 }
 
-.reveal-item.is-visible {
+.experience-timeline.is-visible .experience-item {
   opacity: 1;
   transform: translateY(0);
 }
 
 @media (min-width: 768px) {
-  .reveal-item--from-left {
+  .experience-timeline .experience-item--from-left {
     transform: translateX(-2rem);
   }
 
-  .reveal-item--from-left.is-visible {
+  .experience-timeline.is-visible .experience-item--from-left {
     transform: translateX(0);
   }
 
-  .reveal-item--from-right {
+  .experience-timeline .experience-item--from-right {
     transform: translateX(2rem);
   }
 
-  .reveal-item--from-right.is-visible {
+  .experience-timeline.is-visible .experience-item--from-right {
     transform: translateX(0);
   }
 }
 
-.reveal-item .timeline-dot {
+.experience-timeline .timeline-dot {
   transform: scale(0);
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--item-index, 0) * 120ms + 100ms);
 }
 
-.reveal-item.is-visible .timeline-dot {
+.experience-timeline.is-visible .timeline-dot {
   transform: scale(1);
 }
 
@@ -179,13 +181,13 @@ button:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal-section,
-  .reveal-item {
+  .experience-timeline .experience-item {
     opacity: 1;
     transform: none;
     transition: none;
   }
 
-  .reveal-item .timeline-dot {
+  .experience-timeline .timeline-dot {
     transform: scale(1);
     transition: none;
   }

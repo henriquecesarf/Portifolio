@@ -26,9 +26,7 @@ export default function Home() {
           <About />
         </RevealSection>
         <SectionDivider />
-        <RevealSection>
-          <Experience />
-        </RevealSection>
+        <Experience />
         <SectionDivider />
         <RevealSection>
           <Skills />
